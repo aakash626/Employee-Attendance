@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Attendance Console</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header>
+  <h1>Attendance Console</h1>
+  <label>API address <input id="api" aria-label="API address"></label>
+  <span id="state"><span class="dot"></span> checking</span>
+</header>
+<nav id="tabs"></nav>
+<main id="main"></main>
+<dialog id="dlg"></dialog>
+<div id="toast" role="status"></div>
+
+<!-- Plain scripts (not ES modules) so the page also works when opened by double-click. Order matters. -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/views/punch.js"></script>
+<script src="js/views/attendance.js"></script>
+<script src="js/views/employees.js"></script>
+<script src="js/views/analytics.js"></script>
+<script src="js/views/checks.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

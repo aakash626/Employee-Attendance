@@ -1,0 +1,357 @@
+/* Attendance Console styles. Tokens first, then layout, controls, data display, chart. */
+/* Design tokens */
+:root {
+    --bg: #edf0f4;
+    --panel: #fff;
+    --ink: #162033;
+    --mut: #5d6b7e;
+    --line: #d5dce6;
+    --acc: #1f4fd8;
+    --late: #b45f06;
+    --ok: #1b7a50;
+    --bad: #b3261e;
+    --ot: #6d3fc0
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.45 "Schibsted Grotesk", system-ui, sans-serif;
+    font-variant-numeric: tabular-nums
+}
+
+/* Layout: header, tabs, page */
+header {
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+header h1 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 700;
+    margin-right: auto
+}
+
+header label {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+    color: #b8c3d4
+}
+
+header input {
+    background: #22304a;
+    color: #fff;
+    border: 1px solid #3a4b6b;
+    width: 230px
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #888;
+    display: inline-block
+}
+
+.dot.up {
+    background: #3ecf8e
+}
+
+.dot.down {
+    background: #ff6b5e
+}
+
+nav {
+    display: flex;
+    gap: 2px;
+    padding: 0 24px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto
+}
+
+nav button {
+    background: none;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    border-radius: 0;
+    color: var(--mut);
+    padding: 12px 16px;
+    font-weight: 500
+}
+
+nav button.on {
+    color: var(--ink);
+    border-color: var(--acc)
+}
+
+main {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 16px;
+    display: grid;
+    gap: 20px
+}
+
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 20px;
+    overflow-x: auto
+}
+
+h2 {
+    margin: 0 0 14px;
+    font-size: 17px
+}
+
+h3 {
+    margin: 18px 0 8px;
+    font-size: 15px
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 12px
+}
+
+label {
+    display: grid;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--mut)
+}
+
+/* Form controls */
+input,
+select,
+button {
+    font: inherit;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--ink)
+}
+
+button {
+    background: var(--acc);
+    border-color: var(--acc);
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer
+}
+
+button.sec {
+    background: #fff;
+    color: var(--acc)
+}
+
+button.link {
+    background: none;
+    border: 0;
+    color: var(--acc);
+    padding: 2px 4px
+}
+
+:focus-visible {
+    outline: 3px solid #8fb0ff;
+    outline-offset: 1px
+}
+
+/* Tables, status chips, facts */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px
+}
+
+th {
+    text-align: left;
+    color: var(--mut);
+    font-weight: 500;
+    border-bottom: 1px solid var(--line);
+    padding: 6px 8px;
+    white-space: nowrap
+}
+
+td {
+    padding: 7px 8px;
+    border-bottom: 1px solid #eef1f5;
+    white-space: nowrap
+}
+
+tr.st td:first-child {
+    border-left: 4px solid var(--c, #999)
+}
+
+.chip {
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    background: var(--c, #999)
+}
+
+.PRESENT {
+    --c: var(--ok)
+}
+
+.WFH {
+    --c: var(--acc)
+}
+
+.ON_DUTY {
+    --c: var(--ot)
+}
+
+.ABSENT {
+    --c: var(--bad)
+}
+
+.LEAVE {
+    --c: var(--late)
+}
+
+.facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-top: 12px
+}
+
+.facts div {
+    border-left: 3px solid var(--line);
+    padding-left: 10px
+}
+
+.facts b {
+    display: block;
+    font-size: 20px
+}
+
+.facts span {
+    font-size: 12px;
+    color: var(--mut)
+}
+
+.pager {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 12px;
+    color: var(--mut);
+    font-size: 13px
+}
+
+.hint {
+    color: var(--mut);
+    font-size: 13px;
+    margin: 6px 0 0
+}
+
+.empty {
+    color: var(--mut);
+    padding: 16px 0
+}
+
+.good {
+    color: var(--ok);
+    font-weight: 700
+}
+
+.fail {
+    color: var(--bad);
+    font-weight: 700
+}
+
+/* Dialog and toast */
+dialog {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    width: min(560px, 94vw)
+}
+
+dialog::backdrop {
+    background: #16203388
+}
+
+dialog form {
+    display: grid;
+    gap: 12px
+}
+
+.hist {
+    font-size: 13px;
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
+    padding-top: 8px
+}
+
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    display: none;
+    max-width: 90vw
+}
+
+#toast.err {
+    background: var(--bad)
+}
+
+/* Trend chart */
+svg {
+    width: 100%;
+    height: auto
+}
+
+svg text {
+    font-size: 11px;
+    fill: var(--mut)
+}
+
+.gl {
+    stroke: var(--line)
+}
+
+.wk {
+    fill: #eef1f5
+}
+
+.l1 {
+    stroke: var(--acc);
+    fill: none;
+    stroke-width: 2
+}
+
+.l2 {
+    stroke: var(--late);
+    fill: none;
+    stroke-width: 2;
+    stroke-dasharray: 5 3
+}
